@@ -4,13 +4,13 @@
 %global debug_package %{nil}
 
 Name:	 opensbi
-Version: 0.6
+Version: 0.9
 Release: 1
 Summary: RISC-V Open Source Supervisor Binary Interface
 URL:	 https://github.com/riscv/opensbi
 License: BSD
 
-Source0: https://github.com/riscv/opensbi/archive/v0.6.zip
+Source0: https://github.com/riscv/opensbi/archive/v0.9.zip
 
 Patch0: 0001-Enable-build-id-for-elf-files.patch
 
@@ -49,15 +49,15 @@ The opensbi lib for developing applications of interaction with RISC-V firmware.
 mkdir -p build-oe/qemu-virt
 
 # QEMU/virt build: use flatten Linux kernel Image as QEMU virt payload
-make O=build-oe/qemu-virt PLATFORM=qemu/virt FW_PAYLOAD=y FW_PAYLOAD_PATH=/boot/Image 
+make O=build-oe/qemu-virt PLATFORM=generic FW_PAYLOAD=y FW_PAYLOAD_PATH=/boot/Image
 
 # TODO: build opensbi Image for SiFive hardware
 
 %install 
 # QEMU/virt Install
-make I=%{buildroot} PLATFORM=qemu/virt O=build-oe/qemu-virt install
+make I=%{buildroot} PLATFORM=generic O=build-oe/qemu-virt install
 mkdir -p %{buildroot}/boot
-cp %{buildroot}/platform/qemu/virt/firmware/fw_payload.elf \
+cp %{buildroot}/share/opensbi/lp64/generic/firmware/fw_payload.elf \
 	 %{buildroot}/boot/fw_payload_oe_qemuvirt.elf
 
 %files
@@ -67,11 +67,13 @@ cp %{buildroot}/platform/qemu/virt/firmware/fw_payload.elf \
 
 %files devel
 /include/*
-/lib/*
+/lib64/*
 
 %files devel-qemu
-/platform/qemu/virt/*
+/share/opensbi/lp64/generic/*
 
 %changelog
+* Mon May 24 2021 Dong Du <ddnirvana1@gmail.com> - 0.9-1-riscv64
+- Upgrade opensbi to v0.9
 * Mon Aug 03 2020 whoisxxx <zhangxuzhou4@huawei.com> - 0.6-1-riscv64
 - Init version of QEMU/virt with flattened Image as payload

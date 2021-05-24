@@ -1,17 +1,18 @@
-From 458c01801bb9f0084d47ef421809693517c48ccf Mon Sep 17 00:00:00 2001
-From: zhangxuzhou <zhangxuzhou4@huawei.com>
-Date: Mon, 3 Aug 2020 16:58:44 +0800
+From 48a7852db428cdac57948a0d6b5b040b7a081782 Mon Sep 17 00:00:00 2001
+From: Dong Du <ddnirvana1@gmail.com>
+Date: Mon, 24 May 2021 15:14:54 +0800
 Subject: [PATCH] Enable build id for elf files
 
+Signed-off-by: Dong Du <ddnirvana1@gmail.com>
 ---
  Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index ccf8ea3..025ccf8 100644
+index d6f097d..347318b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -191,7 +191,7 @@ ASFLAGS		+=	$(firmware-asflags-y)
+@@ -228,7 +228,7 @@ ASFLAGS		+=	$(firmware-asflags-y)
  
  ARFLAGS		=	rcs
  
@@ -21,5 +22,5 @@ index ccf8ea3..025ccf8 100644
  ELFFLAGS	+=	$(firmware-ldflags-y)
  
 -- 
-2.26.2
+2.31.1
 
