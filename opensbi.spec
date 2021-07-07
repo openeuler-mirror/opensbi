@@ -13,6 +13,7 @@ License: BSD
 Source0: https://github.com/riscv/opensbi/archive/v0.9.zip
 
 Patch0: 0001-Enable-build-id-for-elf-files.patch
+Patch1: 0001-Penglai-supports.patch
 
 BuildRequires: kernel-riscv64
 BuildRequires: gcc, binutils, findutils, coreutils, gzip, file
@@ -43,7 +44,7 @@ Summary: OpenSBI Static library for QEMU
 The opensbi lib for developing applications of interaction with RISC-V firmware.
 
 %prep
-%autosetup -n opensbi-%{version}
+%autosetup -n opensbi-%{version} -p1
 
 %build
 mkdir -p build-oe/qemu-virt
